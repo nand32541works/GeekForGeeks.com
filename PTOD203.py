@@ -1,0 +1,18 @@
+class Solution:
+	def getLPSLength(self, s):
+        n = len(s)
+        lps = [0]*n
+        length, i = 0, 1
+        
+        while i < n:
+            if s[i] == s[length]:
+                length +=1
+                lps[i]=length
+                i +=1
+            else:
+                if length == 0:
+                    lps[i] = 0
+                    i +=1
+                else:
+                    length =lps[length - 1]
+        return lps[-1]
